@@ -12322,7 +12322,7 @@ GROUP BY item_name
 ORDER BY Articulo_Barato DESC
 LIMIT 1;
 
---¿Cuántos platos americanos hay en el menú?
+--¿Cuántos platos americanos hay en el menú? 6
 SELECT COUNT (category)
 FROM menu_items
 WHERE category='American';
@@ -12342,26 +12342,26 @@ WHERE category='Italian';
 SELECT category, item_name
 FROM menu_items
 ORDER BY category
---¿Cuál es el precio promedio de los platos?
+--¿Cuál es el precio promedio de los platos? 13.29
 SELECT ROUND(AVG (price), 2) AS precio_promedio_platillo
 FROM menu_items
 --c) Explorar la tabla “order_details” para conocer los datos que han sido recolectados.
 SELECT * FROM order_details;
---¿Cuántos pedidos únicos se realizaron en total?
+--¿Cuántos pedidos únicos se realizaron en total? 5,370
 SELECT COUNT (DISTINCT(order_id))
 FROM order_details;
---¿Cuáles son los 5 pedidos que tuvieron el mayor número de artículos?
+--¿Cuáles son los 5 pedidos que tuvieron el mayor número de artículos? 440, 2675, 3473, 4305 y 443
 SELECT order_id, COUNT (item_id) AS numero_de_articulos_por_pedido
 FROM order_details
 GROUP BY order_id
 ORDER BY numero_de_articulos_por_pedido DESC
 LIMIT 5;
---¿Cuándo se realizó el primer pedido y el último pedido?
+--¿Cuándo se realizó el primer pedido y el último pedido? 01-01-2023 y 31-03-2023
 SELECT MIN (order_date)
 FROM order_details;
 SELECT MAX (order_date)
 FROM order_details;
---¿Cuántos pedidos se hicieron entre el '2023-01-01' y el '2023-01-05'?
+--¿Cuántos pedidos se hicieron entre el '2023-01-01' y el '2023-01-05'? 702
 SELECT COUNT (*) FROM order_details
 WHERE order_date BETWEEN '2023-01-01' AND '2023-01-05'
 --d) Usar ambas tablas para conocer la reacción de los clientes respecto al menú.
